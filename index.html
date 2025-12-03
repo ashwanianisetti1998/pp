@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Personal portfolio showcasing projects, skills and contact information." />
+
+  <!-- Google Fonts (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#7c3aed;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.03);
+      --radius:12px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#071120 0%, #081226 60%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      padding:32px;
+    }
+
+    /* Container */
+    .wrap{max-width:1100px;margin:0 auto}
+
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .brand h1{font-size:18px;margin:0}
+    .brand p{margin:0;font-size:13px;color:var(--muted)}
+
+    nav{display:flex;gap:12px}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-size:14px}
+    nav a:hover{color:#fff;background:var(--glass-2)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;margin-bottom:28px}
+    .card{background:linear-gradient(180deg,var(--glass), transparent);border-radius:var(--radius);padding:18px;box-shadow:0 6px 18px rgba(2,6,23,0.6);backdrop-filter: blur(6px)}
+
+    .intro h2{margin:0 0 8px 0;font-size:28px}
+    .intro p{margin:0 0 12px 0;color:var(--muted)}
+    .ctas{display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#06b6d4);color:#fff}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    /* Profile */
+    .profile{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+    .avatar{width:160px;height:160px;border-radius:18px;overflow:hidden;display:inline-grid;place-items:center;background:linear-gradient(180deg,#0b1220,#061022)}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .profile p{color:var(--muted);margin:0}
+
+    /* Sections */
+    section{margin-bottom:22px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+
+    .project{padding:14px;border-radius:12px;background:linear-gradient(180deg,var(--card),#061022);border:1px solid rgba(255,255,255,0.03)}
+    .project h3{margin:0 0 6px 0}
+    .project p{margin:0;color:var(--muted);font-size:14px}
+    .tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.03)}
+
+    /* Skills */
+    .skill{display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:10px;background:var(--glass)}
+    .meter{height:8px;border-radius:8px;background:rgba(255,255,255,0.06);overflow:hidden}
+    .meter > i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,var(--accent),#06b6d4)}
+
+    /* Contact */
+    form{display:grid;gap:8px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:inherit}
+    textarea{min-height:100px;resize:vertical}
+
+    footer{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;padding-top:8px}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .projects{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .profile{flex-direction:row;text-align:left}
+      .avatar{width:96px;height:96px}
+    }
+
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .center{display:flex;align-items:center;justify-content:center}
+
+    /* subtle animation */
+    .fade-up{transform:translateY(6px);opacity:0;animation:fadeUp .6s ease forwards}
+    @keyframes fadeUp{to{transform:none;opacity:1}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">YN</div>
+        <div>
+          <h1>Your Name</h1>
+          <p>Frontend Developer • MERN • UI / UX</p>
+        </div>
+      </div>
+
+      <nav aria-label="Primary Navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="card intro fade-up">
+          <h2>Hi — I’m <span style="color:var(--accent)">Your Name</span></h2>
+          <p>I'm a developer building clean, accessible web applications. I love turning ideas into delightful experiences on the web.</p>
+          <div class="ctas">
+            <button class="btn btn-primary" id="downloadResume">Download Resume</button>
+            <a class="btn btn-ghost" href="#contact">Hire me</a>
+          </div>
+
+          <div style="margin-top:18px">
+            <h4 style="margin:0 0 8px 0">Featured Project</h4>
+            <div class="project" style="display:flex;flex-direction:column">
+              <strong>TaskMaster</strong>
+              <p class="muted">A simple TODO app with offline support and sync.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card profile fade-up" aria-label="Profile card">
+          <div class="avatar">
+            <!-- Replace with your photo -->
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Your Name">
+          </div>
+          <div>
+            <p style="margin:0;font-weight:600">Your Name</p>
+            <p class="muted">Frontend Developer</p>
+            <p class="muted" style="font-size:13px;margin-top:8px">Based in Your City • Open to freelance & full-time</p>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about" class="card fade-up">
+        <h3>About me</h3>
+        <p class="muted">I build front-end interfaces and small full-stack applications. I enjoy working with React, Node.js and modern CSS. I focus on performance, accessibility, and clear UX.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div>
+            <h4 style="margin:0 0 6px 0">Experience</h4>
+            <p class="muted" style="margin:0">2+ years building web apps, freelance and team projects.</p>
+          </div>
+          <div>
+            <h4 style="margin:0 0 6px 0">Education</h4>
+            <p class="muted" style="margin:0">Degree / Bootcamp • Year</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h3 style="margin-bottom:10px">Projects</h3>
+        <div class="projects">
+          <article class="project" data-project="1">
+            <h3>Project One</h3>
+            <p class="muted">Short description of the project. Tech: React, Node.js</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Node</span>
+              <span class="tag">CSS</span>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <button class="btn btn-ghost" onclick="openProject(1)">View</button>
+              <a class="btn" href="#" onclick="window.open('https://example.com','_blank')">Live</a>
+            </div>
+          </article>
+
+          <article class="project" data-project="2">
+            <h3>Project Two</h3>
+            <p class="muted">E-commerce mock with cart and checkout.</p>
+            <div class="tags">
+              <span class="tag">MERN</span>
+              <span class="tag">Stripe</span>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <button class="btn btn-ghost" onclick="openProject(2)">View</button>
+              <a class="btn" href="#">Code</a>
+            </div>
+          </article>
+
+          <article class="project" data-project="3">
+            <h3>Project Three</h3>
+            <p class="muted">Personal blog with Markdown support and static generation.</p>
+            <div class="tags">
+              <span class="tag">Next.js</span>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <button class="btn btn-ghost" onclick="openProject(3)">View</button>
+              <a class="btn" href="#">Code</a>
+            </div>
+          </article>
+
+          <article class="project" data-project="4">
+            <h3>Project Four</h3>
+            <p class="muted">A small utility to visualize data client-side.</p>
+            <div class="tags">
+              <span class="tag">D3</span>
+              <span class="tag">Charting</span>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <button class="btn btn-ghost" onclick="openProject(4)">View</button>
+              <a class="btn" href="#">Live</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="card fade-up">
+        <h3>Skills</h3>
+        <div style="display:grid;gap:10px">
+          <div class="skill">
+            <div>
+              <strong>JavaScript</strong>
+              <div class="muted" style="font-size:13px">ES6+, DOM, async</div>
+            </div>
+            <div style="width:40%">
+              <div class="meter"><i style="width:90%"></i></div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <div>
+              <strong>React</strong>
+              <div class="muted" style="font-size:13px">Hooks, Router, State</div>
+            </div>
+            <div style="width:40%">
+              <div class="meter"><i style="width:80%"></i></div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <div>
+              <strong>CSS</strong>
+              <div class="muted" style="font-size:13px">Responsive, Flexbox, Grid</div>
+            </div>
+            <div style="width:40%">
+              <div class="meter"><i style="width:85%"></i></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="card fade-up">
+        <h3>Contact</h3>
+        <p class="muted">Want to work together? Send a quick message — I'll get back to you.</p>
+        <form id="contactForm" onsubmit="submitForm(event)">
+          <input type="text" id="name" placeholder="Your name" required />
+          <input type="email" id="email" placeholder="Your email" required />
+          <textarea id="message" placeholder="Your message" required></textarea>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-primary" type="submit">Send</button>
+            <button class="btn btn-ghost" type="button" onclick="clearForm()">Clear</button>
+          </div>
+        </form>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Your Name</div>
+      <div class="muted">Built with HTML • CSS • JS</div>
+    </footer>
+  </div>
+
+  <!-- Project Modal (simple) -->
+  <dialog id="projectModal" style="border:none;background:transparent;padding:0">
+    <div class="card" style="width:min(720px,92vw);">
+      <button style="float:right;border:0;background:transparent;color:var(--muted);font-size:18px;padding:6px" onclick="closeModal()">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </dialog>
+
+  <script>
+    // small helper: set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Example resume download (replace with your file path)
+    document.getElementById('downloadResume').addEventListener('click', function(){
+      const link = document.createElement('a');
+      link.href = 'resume.pdf'; // put resume.pdf in same folder or change url
+      link.download = 'YourName_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+
+    // Open project modal with details
+    function openProject(id){
+      const modal = document.getElementById('projectModal');
+      const content = document.getElementById('modalContent');
+      const projects = {
+        1:{title:'Project One',desc:'A full-stack todo app with offline sync and authentication. Built with React, Node and IndexedDB.'},
+        2:{title:'Project Two',desc:'E-commerce mock with product management, cart and simulated payments.'},
+        3:{title:'Project Three',desc:'Static blog using Markdown and SSG.'},
+        4:{title:'Project Four',desc:'Interactive data visualizer using D3.'}
+      };
+      const p = projects[id] || {title:'Unknown',desc:'No details available.'};
+      content.innerHTML = `<h2 style="margin-top:4px">${p.title}</h2><p class=\"muted\">${p.desc}</p><p style=\"margin-top:12px\">Tech: <strong>Example stack</strong></p>`;
+      if(typeof modal.showModal === 'function') modal.showModal(); else alert(p.title + "\n\n" + p.desc);
+    }
+    function closeModal(){
+      const modal = document.getElementById('projectModal');
+      if(typeof modal.close === 'function') modal.close();
+    }
+
+    // Contact form (does not send — replace with API integration as needed)
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name || !email || !message){
+        alert('Please fill all fields.');
+        return;
+      }
+      // simple validation for email
+      if(!/^\S+@\S+\.\S+$/.test(email)){
+        alert('Please enter a valid email.');
+        return;
+      }
+
+      // Here you could POST to your server or an email API — for now we just show a success message
+      alert('Thanks ' + name + '! Your message has been noted.');
+      clearForm();
+    }
+
+    function clearForm(){
+      document.getElementById('contactForm').reset();
+    }
+
+    // Small accessibility: allow closing modal with ESC
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeModal();
+    });
+
+    // Reveal animations on load
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('.fade-up').forEach((el,i)=>{
+        el.style.animationDelay = (i*80)+'ms';
+      });
+    });
+  </script>
+</body>
+</html>
